@@ -1,0 +1,42 @@
+<div class="bgcontainer">
+    <div class="bgcart">
+        <div *ngIf="!shopService.thankyou" class="cartview">
+            <div>
+                <h1> Your Cart:</h1>
+            </div>
+            <div>
+                <p class="item" *ngFor="let p of shopService.cartArray; index as i;"> Product Name: {{p.name | titlecase}} 
+                    <br>Price: ${{p.price}}
+                    <input type="button" value="Remove from Cart" class=" removebutton" (click)="removeFromCart(i)"> 
+                </p>
+            </div>
+            <br>
+
+            <div *ngIf="!shopService.cartArray[0]" class="emptycart">
+                <p>Looks like your cart is empty.</p>
+                <p>You can fix that by searching for your favorite pokemon and clicking the Buy Now button!</p>
+
+            </div>
+
+            <div *ngIf="shopService.cartArray[0]">
+                <label>Total Price: <span> ${{totalPrice()}} </span> </label>
+            </div>
+            <br>
+            <br>
+            <div  *ngIf="shopService.cartArray[0]">
+                <input type="button" class="buybutton" value="Buy Products" (click)="clearCart()">
+            </div>
+        </div>
+
+        <div *ngIf="shopService.thankyou" class="thankyou">
+            <p>Team Rocket thanks you for your purchase!</p>
+            <p>Zero Pokemon harmed in bringing you this service, guaranteed!!!</p>
+            <p class="disclaimer">*this number not actually guaranteed</p>
+        </div>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+
+
+    </div>
+</div>

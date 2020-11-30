@@ -1,0 +1,77 @@
+<div class="searchcontainer">
+    <div class="searchbox">
+        <br><br>
+        <input type="text" placeholder="Enter a pokemon name" [(ngModel)]="pokename" class="searchbar">
+        <input type="button" value="search" (click)="click()">
+        <br><br><br>
+   
+    </div>
+    <hr>
+</div>
+
+
+<div class="displaycontainer">
+    <br><br><br>
+    <div>
+        <input type="button" value="General" (click)="tabSelector(1)">
+        <input type="button" value="Moves and Abilities" (click)="tabSelector(2)">
+        <input type="button" value="Pictures" (click)="tabSelector(3)">
+    </div>
+
+    <br><br><br>
+    <div>
+        <div [ngSwitch]="tabSelect">
+            <div *ngSwitchCase="1">
+                <p>Name: {{pokedata.forms[0].name | titlecase}}</p>
+                <p>No# {{pokedata.id}}</p>
+                <img [src]="pokedata.sprites.front_default">
+                <div *ngFor="let t of pokedata.types"> Type: {{ t.type.name | titlecase}} </div>
+                <p>Height: {{pokedata.height/10}} meters</p>
+                <p> Weight: {{pokedata.weight/10}} kilograms</p>
+
+            </div>
+            <div *ngSwitchCase="2">
+                <span class="col-md-8">Move List: <br><br>
+                    <div *ngFor="let m of pokedata.moves">
+                    {{ m.move.name | titlecase }}
+
+                    </div>
+                </span>
+                
+                <span class=col-md-4>Ability List: <br><br>
+                    <div *ngFor="let a of pokedata.abilities">
+                    {{ a.ability.name | titlecase }}
+                    </div>
+                </span>
+            </div>
+            <div *ngSwitchCase="3">
+                <span >
+                    <img [src]="this.pokedata.sprites.other['official-artwork'].front_default">
+                    <img [src]="pokedata.sprites.other.dream_world.front_default">
+                </span>
+                
+                <span *ngFor="let p of spritesArray">
+                    <img src="{{p}}">
+                </span>
+                
+
+            </div>
+            
+        </div>
+    </div>
+    <div *ngIf="pokedata">
+        <input type="button" value="Buy Now" (click)="buyPokemon()">
+        <input type="button" value="Buy Shiny Version" (click)="buyShiny()">
+        <p *ngIf="pokeCounter">Added {{pokeCounter}} {{pokedata.forms[0].name | titlecase}} to your cart! </p>
+        <p *ngIf="shinyCounter"> Added {{shinyCounter}} shiny {{pokedata.forms[0].name | titlecase}} to your cart!</p>
+    </div>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    
+
+</div>

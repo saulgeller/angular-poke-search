@@ -1,0 +1,23 @@
+.welcomehead{
+    background-color: rgba(190,5,5,0.5)
+}
+
+.bg {
+    background-image: url("https://i.pinimg.com/originals/ae/a0/47/aea0472433f6c869915df4c72994c7f7.png");
+    background-size: 600px 800px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 50px hidden yellow;
+    border-radius: 0px 600px 0px 0px ;
+    margin-left: 30%;
+    margin-right: 30%;
+    
+
+
+    
+}
+
+.bigcontainer {
+    background-color: rgba(190,5,5,0.5);
+    border: 5px solid black;
+}
